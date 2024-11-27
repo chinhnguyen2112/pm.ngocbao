@@ -1,0 +1,230 @@
+* {
+    font-family: 'Mulish', sans-serif !important;
+}
+
+body {
+    background: #F5F5F5;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_header {
+    width: 300px;
+    height: 100vh;
+    border-radius: 0px 10px 10px 0px;
+    position: fixed;
+    z-index: 3;
+    padding-right: 40px;
+    overflow: auto;
+    background: #f0f2f4;
+}
+.main_header::-webkit-scrollbar {
+    width: 0;
+}
+.content_header {
+    padding: 20px 24.5px;
+    background: #fff;
+    height: max-content;
+}
+.logo {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.menu {
+    margin-top: 15px;
+}
+
+.title_menu {
+    display: flex;
+    align-items: center;
+}
+
+.title_menu p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21.79px;
+    text-align: left;
+    margin-left: 10px;
+    color: #ED1E25;
+}
+
+.title_menu div {
+    background: #ED1E25;
+    width: 12px;
+    height: 1px;
+}
+
+.this_menu.actived {
+    background: #FFF7F7;
+}
+.this_menu {
+    display: flex;
+    position: relative;
+    padding: 14px 20px;
+    align-items: center;
+    margin-top: 10px;
+}
+.img_menu {
+    width: 17px;
+    height: 16px;
+    display: block;
+}
+
+.this_menu p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21.79px;
+    color: #260944;
+    margin-left: 10px;
+}
+
+.active_menu {
+    position: absolute;
+    right: 20px;
+}
+
+.list_menu {
+    padding-top: 10px;
+}.this_menu:hover {
+    background: #FFF7F7;
+}.main_sidebar {
+    position: fixed;
+    top: 0;
+    left: 340px;
+    z-index: 5;
+    background: #f5f5f5;
+    width: calc(100% - 340px);
+    padding-bottom: 0px;
+}
+.main {
+    margin-left: 340PX;
+    margin-right: 20px;
+    width: calc(100% - 360px);
+    padding-top: 275px;
+    max-width: 8000px !important;
+    width: max-content;
+    min-width: calc(100% - 340px);
+}.main_top {
+    background: #fff;
+    box-shadow: 0px 4px 20px 0px #2F8FE812;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    display: flex;
+    justify-content: space-between;
+}.add_project {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}.add_project a {
+    display: flex;
+    align-items: center;
+}.img_add_project {
+    margin-right: 15px;
+    background: #ED1E2512;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+}.img_add_project img {
+    padding: 14px;
+    width: 17px;
+}.add_project p {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 24.51px;
+    color: #ED1E25;
+}
+.money {
+    padding: 7px 20px;
+    background: #ED1E250F;
+    border-radius: 29px;
+    height: min-content;
+    margin-right: 15px;
+}
+
+.money p {
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 32.68px;
+    color: #ED1E25;
+}
+.right_top {
+    display: flex;
+}.profile {
+    display: flex;
+    align-items: center;
+}.avatar {
+    width: 45px;
+    margin-right: 15px;
+}.box_profile {
+    position: relative;
+    cursor: pointer;
+}.name_role {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19.07px;
+    color: #ED1E25;
+    margin-bottom: 7px;
+}.name {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18.78px;
+    color: #260944;
+}.name img {
+    rotate: 90deg;
+    margin-top: -4px;
+}.nav_profile {
+    display: none;
+    position: absolute;
+    width: 186px;
+    right: 0;
+    padding: 8px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px 0px #2F8FE812;
+    background: #fff;
+}.nav_profile a {
+    padding: 8px 16px 8px 16px;
+    display: flex;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20.43px;
+    color: #260944;
+}.nav_profile a img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+}.main_filter {
+    margin-top: 20px;
+}.bg_main {
+    background: #fff;
+    box-shadow: 0px 4px 20px 0px #2F8FE812;
+    padding: 10px;
+    border-radius: 10px;
+}
+.box_profile:hover .nav_profile {
+    display: block;
+}.nav_profile a:hover {
+    background: #FFF7F7;
+}
+.box_export {
+    padding: 10px 24.5px;
+}
+
+.box_export .title_menu {
+    background: #FEEFF0;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.box_export .title_menu p {
+    margin-left: 0;
+    font-weight: 700;
+}.box_header {
+    max-height: calc( 100vh - 62px);
+    overflow: auto;
+}.data_header{
+    background: #fff;
+    height: 100vh;
+}

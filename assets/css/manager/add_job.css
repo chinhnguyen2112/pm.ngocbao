@@ -1,0 +1,228 @@
+.main {
+    padding-top:70px;
+ }
+ .body_add_project {
+     border-radius: 10px;
+     margin: auto;
+     margin-top: 30px;
+     background: #fff;
+ }
+ .main_add_project {
+     padding: 20px 40px;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     align-items: center;
+     gap: 20px 30px;
+ }
+ 
+ .this_add_project {
+     width: 100%;
+     position: relative;
+ }
+ 
+ .w_50 {
+     width: calc(50% - 15px);
+ }.w_100 {
+     width: 100%;
+ }
+ 
+ .title_input {
+     font-size: 16px;
+     font-weight: 700;
+     line-height: 21.6px;
+     margin-bottom: 5px;
+ }
+ 
+ .title_input span {
+     color: red;
+ }
+ 
+ .this_add_project input,.this_add_project select,.this_add_project textarea {
+     padding: 14px 16px;
+     border-radius: 30px;
+     border: 1px solid #B8B8B8;
+     width: -webkit-fill-available;
+ }.data_index {
+     display: flex;
+     gap: 5px;
+     /* width: 200px; */
+     align-items: center;
+ }
+ 
+ .list_data_index,.list_data_qa {
+     display: flex;
+     gap: 20px;
+     margin-left: -23px;
+ }
+ 
+ .btn_add_project button {
+     color: #fff;
+     font-size: 16px;
+     font-weight: 600;
+     line-height: 20px;
+     text-align: left;
+     background: #00B528;
+     border-radius: 30px;
+     padding: 15px 44px;
+     width: 173px;
+     text-align: center;
+ }
+ .btn_add_project button.btn_reset {
+     background: red;
+ }
+ .btn_add_project {
+     margin: auto;
+     cursor: pointer;
+     background: unset;
+     display: flex;
+     gap: 30px;
+     width: 100%;
+     align-items: center;
+     justify-content: center;
+ }.status_project {
+     cursor: pointer;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+     width: max-content;
+     margin: auto;
+     padding: 0 20px;
+ }
+ 
+ .status_project svg {rotate: 90deg;margin-left: 10px;position: absolute;right: 0;top: 8px;}
+ 
+ .status_project p {
+     display: none;
+     color: #00B528;
+     padding: 5px;
+ }.main_add_project .error {
+     font-size: 14px;
+     color: red;
+ }
+ .status_project.active p{
+     display: block;
+ }.sweet-alert {
+     filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.55));
+ }
+ .select_add{
+     width: 100%;
+ }.select2-container .select2-selection--single {
+     height: 51px;
+     border-radius: 30px;
+ }
+ 
+ .select2-container--default .select2-selection--single .select2-selection__rendered {
+     line-height: 46px;
+ }
+ 
+ .select2-container--default .select2-selection--single .select2-selection__arrow {
+     height: 49px;
+ }.select2-container {
+     width: 100% !important;
+ }
+ .list_index{
+     display: flex;
+     justify-content: space-between;
+     width: -webkit-fill-available;
+     flex-wrap: wrap;
+     padding: 15px;
+     border: 1px solid #ccc;
+     position: relative;
+     z-index: 1;
+     border-radius: 0 10px 10px;
+ }
+ .list_index_2{
+     display: flex;
+     justify-content: space-between;
+     width: -webkit-fill-available;
+     flex-wrap: wrap;
+     margin-bottom: 15px;
+ }.btn_add_index {
+     width: -webkit-fill-available;
+     margin-bottom: 20px;
+     cursor: pointer;
+ }.add_index {
+     background: #00CA2C;
+     width: fit-content;
+     display: flex;
+     align-items: center;
+     gap: 5px;
+     padding: 12px 20px;
+     border-radius: 10px;
+     color: #fff;
+ }
+ .status_index {
+     width: fit-content;
+     padding: 15px 10px;
+     position: relative;
+     top: 1px;
+     z-index: 4;
+     background: #fff;
+     border-radius: 10px 10px 0 0;
+ }
+ .status_index.active{
+     border: 1px solid #ccc;
+     border-bottom: unset;
+ 
+ }
+ .inp_index {
+     position: relative;
+ }
+ 
+ .ab_\% {
+     position: absolute;
+     top: 14px;
+     right: 22px;
+     font-size: 17px;
+ }.add_project a {
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+ }
+ .select2-container .select2-selection--single .select2-selection__rendered{
+     font-size: 16px !important;
+ }.data_index {
+     /* display: inline-block; */
+     position: relative;
+   }
+ 
+   .data_index input[type="checkbox"] {
+     visibility: hidden;
+     width: auto;
+   }
+ 
+   .checkmark {
+     width: 16px;
+     height: 16px;
+     background-color: transparent;
+     border: 1px solid #00D315;
+     border-radius: 50%;
+     position: relative;
+     cursor: pointer;
+     display: block;
+   }
+ 
+   .checkmark::after {
+     content: "";
+     position: absolute;
+     display: none;
+     left: 6px;
+     top: 2px;
+     width: 4px;
+     height: 8px;
+     border: solid #00D315;
+     border-width: 0 1px 1px 0;
+     transform: rotate(45deg);
+   }
+ 
+   .data_index input[type="checkbox"]:checked ~ .checkmark::after {
+     display: block;
+   }.nav_edit {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    top: 0;
+}
