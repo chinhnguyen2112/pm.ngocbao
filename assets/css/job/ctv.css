@@ -1,6 +1,7 @@
 .main_filter {
     margin-top: 20px;
 }
+
 .title_filter,
 .title_project {
     display: flex;
@@ -172,7 +173,7 @@ th:last-child::before {
 
 .btn_popup p {
     border: 1px solid #797979;
-    border-radius: 30px;
+    border-radius: 8px;
     padding: 10px 24px;
     display: flex;
     align-items: center;
@@ -196,7 +197,7 @@ th:last-child::before {
 .btn_project {
     padding: 7px 22px;
     background: #FF7A00;
-    border-radius: 30px;
+    border-radius: 8px;
     color: #FFFFFF;
 }
 
@@ -253,9 +254,12 @@ th:last-child::before {
 
 .sweet-alert {
     filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.55));
-}.main_status p:last-child {
+}
+
+.main_status p:last-child {
     border-bottom: unset;
 }
-.box_export{
+
+.box_export {
     display: block !important;
 }

@@ -124,7 +124,7 @@
                                         <button class="read-more">Xem thêm</button>
                                     </td>
                                     <td>
-                                        <p class="index_job cl<?= $val['status_index'] ?>"><?= ($val['status_index'] == 1) ? 'Có' : "Không" ?></p>
+                                        <p class="index_job cl<?= $val['status_index'] ?>"><?= ($val['status_index'] == 1) ? $val['ratio'].'%' : "Không" ?></p>
                                     </td>
                                     <td class="edit_option">
                                         <div class="status_project" data-id="<?= $val['id'] ?>">
@@ -172,14 +172,6 @@
                     <p class="title_input">Thông tin công việc <span>*</span></p>
                     <textarea style="height: 120px;" name="info"></textarea>
                 </div>
-                <div class="this_add_project">
-                    <p class="title_input">Trạng thái <span>*</span></p>
-                    <select name="status" id="status">
-                        <option value="">Chọn trạng thái</option>
-                        <option value="1">Đang hoạt động</option>
-                        <option value="2">Tạm dừng hoạt động</option>
-                    </select>
-                </div>
                 <div class="this_add_project  check_status_index">
                     <div class="status_index">
                         <p class="title_input">Index</p>
@@ -196,6 +188,20 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="this_add_project box_ratio">
+                    <p class="title_input">Tỉ lệ index mong muốn <span>*</span></p>
+                    <div style="position: relative">
+                    <input type="text" placeholder="Nhập tỉ lệ" name="ratio" class="input_num" value="">
+                    <p class="ab_%"> %</p></div>
+                </div>
+                <div class="this_add_project">
+                    <p class="title_input">Trạng thái <span>*</span></p>
+                    <select name="status" id="status">
+                        <option value="">Chọn trạng thái</option>
+                        <option value="1">Đang hoạt động</option>
+                        <option value="2">Tạm dừng hoạt động</option>
+                    </select>
                 </div>
                 <button class="btn_add_project">
                     <p>Xác Nhận</p>

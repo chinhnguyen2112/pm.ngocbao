@@ -151,11 +151,12 @@ $('.next_index').click(function () {
         return false;
     });
 })
-var id_filter = 0, job_type = 0, created_at_start = 0, created_at_end = 0, web = 0, sctv = 0, sqa = 0, tss = 0, tse = 0, tes = 0, tee = 0, tcs = 0, tce = 0, dls = 0, dle = 0, cr = 0, au = 0, ctv = 0, sj = 0, sin = 0;
+var id_filter = 0, job_type = 0,num_job_type = 0, created_at_start = 0, created_at_end = 0, web = 0, sctv = 0, sqa = 0, tss = 0, tse = 0, tes = 0, tee = 0, tcs = 0, tce = 0, dls = 0, dle = 0, cr = 0, au = 0, ctv = 0, sj = 0, sin = 0;
 function filter_select(e) {
     id_filter = $('select[name="job"]').val() ? $('select[name="job"]').val() : 0;
     web = $('select[name="website"]').val() ? encodeURIComponent($('select[name="website"]').val()) : 0;
     job_type = $('select[name="job_type"]').val() ? $('select[name="job_type"]').val() : 0;
+    num_job_type = $('select[name="num_job_type"]').val() ? $('select[name="num_job_type"]').val() : 0;
     created_at_start = $('input[name="created_at_start"]').val() ? new Date($('input[name="created_at_start"]').val()).getTime() / 1000 - 25200 : 0;
     created_at_end = $('input[name="created_at_end"]').val() ? new Date($('input[name="created_at_end"]').val()).getTime() / 1000 - 25200 + 84600 : 0;
     dls = $('input[name="deadline_start"]').val() ? new Date($('input[name="deadline_start"]').val()).getTime() / 1000 - 25200 : 0;
@@ -173,12 +174,14 @@ function filter_select(e) {
     filter();
 }
 function filter() {
-    var get_type = '', get_author = '', get_created = '', get_created_end = '', get_web = '', get_sctv = '', get_sqa = '', get_tss = '', get_tse = '', get_tes = '', get_tee = '', get_tcs = '', get_tce = '', get_dls = '', get_dle = '', get_cr = '', get_ctv = '', get_sj = '', get_sin = '';
+    var get_type = '', get_type_num = '', get_author = '', get_created = '', get_created_end = '', get_web = '', get_sctv = '', get_sqa = '', get_tss = '', get_tse = '', get_tes = '', get_tee = '', get_tcs = '', get_tce = '', get_dls = '', get_dle = '', get_cr = '', get_ctv = '', get_sj = '', get_sin = '';
     if (web != 0) {
         get_web = '&web=' + web;
     } if (job_type > 0) {
         get_type = '&type=' + job_type;
-    }
+    }if (num_job_type != 0) {
+        get_type_num = '&type_num=' + num_job_type;
+    } 
     if (created_at_start > 0) {
         get_created = '&cs=' + created_at_start;
     }
@@ -220,7 +223,7 @@ function filter() {
     if (sin > 0) {
         get_sin = '&sin=' + sin;
     }
-    var url_filter = "/cong-viec-qa/?id=" + id_filter + get_created + get_created_end + get_dls + get_dle + get_type + get_web + get_sctv + get_sqa + get_tss + get_tse + get_tes + get_tee + get_tcs + get_tce + get_cr + get_author + get_ctv + get_sj + get_sin;
+    var url_filter = "/cong-viec-qa/?id=" + id_filter + get_created + get_created_end + get_dls + get_dle + get_type +get_type_num+ get_web + get_sctv + get_sqa + get_tss + get_tse + get_tes + get_tee + get_tcs + get_tce + get_cr + get_author + get_ctv + get_sj + get_sin;
     window.location.href = url_filter;
 }
 

@@ -174,66 +174,70 @@
     </div>
     <div class="this_advanced" data-value="2">
         <input type="checkbox" class="check_i" name="check_i" value="2">
-        <p>Loại công việc</p>
+        <p>Hạng mục</p>
     </div>
     <div class="this_advanced" data-value="3">
         <input type="checkbox" class="check_i" name="check_i" value="3">
-        <p>Người tạo</p>
+        <p>Loại công việc</p>
     </div>
     <div class="this_advanced" data-value="4">
         <input type="checkbox" class="check_i" name="check_i" value="4">
-        <p>Thời gian tạo</p>
+        <p>Người tạo</p>
     </div>
     <div class="this_advanced" data-value="5">
         <input type="checkbox" class="check_i" name="check_i" value="5">
-        <p>Website</p>
+        <p>Thời gian tạo</p>
     </div>
     <div class="this_advanced" data-value="6">
         <input type="checkbox" class="check_i" name="check_i" value="6">
-        <p>CTV thực hiện</p>
+        <p>Website</p>
     </div>
     <div class="this_advanced" data-value="7">
         <input type="checkbox" class="check_i" name="check_i" value="7">
-        <p>Deadline CTV</p>
+        <p>CTV thực hiện</p>
     </div>
     <div class="this_advanced" data-value="8">
         <input type="checkbox" class="check_i" name="check_i" value="8">
-        <p>Tiến độ CTV</p>
+        <p>Deadline CTV</p>
     </div>
     <div class="this_advanced" data-value="9">
         <input type="checkbox" class="check_i" name="check_i" value="9">
-        <p>Thời gian triển khai</p>
+        <p>Tiến độ CTV</p>
     </div>
     <div class="this_advanced" data-value="10">
         <input type="checkbox" class="check_i" name="check_i" value="10">
-        <p>Thời gian hoàn thành</p>
+        <p>Thời gian triển khai</p>
     </div>
     <div class="this_advanced" data-value="11">
         <input type="checkbox" class="check_i" name="check_i" value="11">
-        <p>Xác nhận duyệt</p>
+        <p>Thời gian hoàn thành</p>
     </div>
     <div class="this_advanced" data-value="12">
         <input type="checkbox" class="check_i" name="check_i" value="12">
-        <p>QA thực hiện</p>
+        <p>Xác nhận duyệt</p>
     </div>
     <div class="this_advanced" data-value="13">
         <input type="checkbox" class="check_i" name="check_i" value="13">
-        <p>Tiến độ QA</p>
+        <p>QA thực hiện</p>
     </div>
     <div class="this_advanced" data-value="14">
         <input type="checkbox" class="check_i" name="check_i" value="14">
-        <p>Thời gian duyệt</p>
+        <p>Tiến độ QA</p>
     </div>
     <div class="this_advanced" data-value="15">
         <input type="checkbox" class="check_i" name="check_i" value="15">
-        <p>Tiến độ công việc chung</p>
+        <p>Thời gian duyệt</p>
     </div>
     <div class="this_advanced" data-value="16">
         <input type="checkbox" class="check_i" name="check_i" value="16">
-        <p>Thời gian hoàn thành</p>
+        <p>Tiến độ công việc chung</p>
     </div>
     <div class="this_advanced" data-value="17">
         <input type="checkbox" class="check_i" name="check_i" value="17">
+        <p>Thời gian hoàn thành</p>
+    </div>
+    <div class="this_advanced" data-value="18">
+        <input type="checkbox" class="check_i" name="check_i" value="18">
         <p>Mức độ ưu tiên</p>
     </div>
 </div>
@@ -282,34 +286,38 @@
     </div>
     <div class="this_advanced" data-value="3">
         <input type="checkbox" class="check_i" name="check_i" value="3">
-        <p>Loại công việc</p>
+        <p>Hạng mục</p>
     </div>
     <div class="this_advanced" data-value="4">
         <input type="checkbox" class="check_i" name="check_i" value="4">
-        <p>Thời gian nhận việc</p>
+        <p>Loại công việc</p>
     </div>
     <div class="this_advanced" data-value="5">
         <input type="checkbox" class="check_i" name="check_i" value="5">
-        <p>Deadline CTV</p>
+        <p>Thời gian nhận việc</p>
     </div>
     <div class="this_advanced" data-value="6">
         <input type="checkbox" class="check_i" name="check_i" value="6">
-        <p>Thời gian hoàn thành</p>
+        <p>Deadline CTV</p>
     </div>
     <div class="this_advanced" data-value="7">
         <input type="checkbox" class="check_i" name="check_i" value="7">
-        <p>Trạng thái công việc</p>
+        <p>Thời gian hoàn thành</p>
     </div>
     <div class="this_advanced" data-value="8">
         <input type="checkbox" class="check_i" name="check_i" value="8">
-        <p>Trạng thái duyệt QA</p>
+        <p>Trạng thái công việc</p>
     </div>
     <div class="this_advanced" data-value="9">
         <input type="checkbox" class="check_i" name="check_i" value="9">
-        <p>Thời gian duyệt</p>
+        <p>Trạng thái duyệt QA</p>
     </div>
     <div class="this_advanced" data-value="10">
         <input type="checkbox" class="check_i" name="check_i" value="10">
+        <p>Thời gian duyệt</p>
+    </div>
+    <div class="this_advanced" data-value="11">
+        <input type="checkbox" class="check_i" name="check_i" value="11">
         <p>Xác nhận duyệt</p>
     </div>
 </div>
@@ -324,38 +332,42 @@
     </div>
     <div class="this_advanced" data-value="3">
         <input type="checkbox" class="check_i" name="check_i" value="3">
-        <p>Loại công việc</p>
+        <p>Hạng mục</p>
     </div>
     <div class="this_advanced" data-value="4">
         <input type="checkbox" class="check_i" name="check_i" value="4">
-        <p>Người tạo</p>
+        <p>Loại công việc</p>
     </div>
     <div class="this_advanced" data-value="5">
         <input type="checkbox" class="check_i" name="check_i" value="5">
-        <p>CTV thực hiện</p>
+        <p>Người tạo</p>
     </div>
     <div class="this_advanced" data-value="6">
         <input type="checkbox" class="check_i" name="check_i" value="6">
-        <p>Deadline CTV</p>
+        <p>CTV thực hiện</p>
     </div>
     <div class="this_advanced" data-value="7">
         <input type="checkbox" class="check_i" name="check_i" value="7">
-        <p>Thời gian CTV gửi</p>
+        <p>Deadline CTV</p>
     </div>
     <div class="this_advanced" data-value="8">
-        <input type="checkbox" class="check_i" name="check_i" value="8">
-        <p>Trạng thái công việc</p>
+        <input type="checkbox" class="check_i" name="check_i" value="7">
+        <p>Thời gian CTV gửi</p>
     </div>
     <div class="this_advanced" data-value="9">
         <input type="checkbox" class="check_i" name="check_i" value="9">
-        <p>Thời gian cập nhật</p>
+        <p>Trạng thái công việc</p>
     </div>
     <div class="this_advanced" data-value="10">
         <input type="checkbox" class="check_i" name="check_i" value="10">
-        <p>Trạng thái xác nhận</p>
+        <p>Thời gian cập nhật</p>
     </div>
     <div class="this_advanced" data-value="11">
         <input type="checkbox" class="check_i" name="check_i" value="11">
+        <p>Trạng thái xác nhận</p>
+    </div>
+    <div class="this_advanced" data-value="12">
+        <input type="checkbox" class="check_i" name="check_i" value="12">
         <p>Trạng thái index</p>
     </div>
 </div>

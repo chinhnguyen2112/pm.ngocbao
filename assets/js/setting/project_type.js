@@ -69,7 +69,6 @@ $("#form_add").validate({
     submitHandler: function (form) {
         $('.btn_add_project').prop('disabled', true);
         var data = new FormData($("#form_add")[0]);
-        var check_return = false;
         var check_discount = true;
         var check_job_type = true;
         $('.name_discount').each(function () {
@@ -125,45 +124,29 @@ $("#form_add").validate({
             })
         }
         $('.list_job_type_2').each(function (index) {
+            if ($(this).data('index') == 1) {
+                $(this).find('.error_ratio').text('Không được để trống');
+                if ($(this).find('.ratio').val() != '') {
+                    $(this).find('.error_ratio').text('');
+                    check_job_type = true;
+
+                } else {
+                    check_job_type = false;
+                    return false;
+                }
+            }
+        });
+        $('.list_job_type_2').each(function (index) {
             if ($(this).find('.job_type').val() > 0 && $(this).find('.number').val() > 0) {
                 data.append('data_job_type[' + index + '][job_type]', $(this).find('.job_type').val());
                 data.append('data_job_type[' + index + '][number]', $(this).find('.number').val());
+                data.append('data_job_type[' + index + '][index]', $(this).data('index'));
+                data.append('data_job_type[' + index + '][ratio]', $(this).find('.ratio').val());
             }
         });
-        if (status_index == 1) {
-            $('.name_index').each(function () {
-                if ($(this).find('option:selected').val() > 0) {
-                    check_return = true;
-                    $(this).parent().find('.error').text('');
-                } else {
-                    $(this).parent().find('.error').text('Không được để trống');
-                    check_return = false;
-                    return false;
-                }
-            });
-            $('.num_index').each(function () {
-                if ($(this).val() == '') {
-                    $(this).parent().find('.error').text('Không được để trống');
-                    check_return = false;
-                    return false;
-                } else {
-                    $(this).parent().find('.error').text('');
-                    check_return = true;
-                }
-            });
-            $('.list_index_2').each(function (index) {
-                if ($(this).find('.name_index').val() > 0 && $(this).find('.num_index').val() != '') {
-                    data.append('data_index[' + index + '][name]', $(this).find('.name_index').val());
-                    data.append('data_index[' + index + '][number]', $(this).find('.num_index').val());
-                }
-            });
-        } else {
-            check_return = true;
-        }
-        if (check_return == false || check_discount == false || check_job_type == false) {
+        if ( check_discount == false || check_job_type == false) {
             return false;
         }
-        data.append('status_index', status_index);
         $.ajax({
             url: '/add_project_type',
             type: "POST",
@@ -291,8 +274,9 @@ $('.img_edit').click(function () {
         }
     });
 })
-var id_filter = 0, bank_type = 0, created_at_start = 0, created_at_end = 0, au = 0, n = 0, br = 0;
+var id_filter = 0, bank_type = 0, created_at_start = 0, created_at_end = 0, au = 0, n = 0, br = 0, get_type = '';
 function filter_select(e) {
+    job_type = $('select[name="job_type"]').val() ? $('select[name="job_type"]').val() : 0;
     n = encodeURIComponent($('select[name="name"]').val());
     au = encodeURIComponent($('select[name="author"]').val());
     bank_type = $('select[name="stt_in"]').val();
@@ -302,7 +286,7 @@ function filter_select(e) {
     filter()
 }
 function filter() {
-    var get_type = '', get_created = '', get_created_end = '', get_au = '', get_n = '', get_br = '';
+    var get_type = '', get_type_job = '', get_created = '', get_created_end = '', get_au = '', get_n = '', get_br = '';
     if (n != 0) {
         get_n = '&n=' + n;
     }
@@ -320,27 +304,30 @@ function filter() {
     }
     if (br > 0) {
         get_br = '&br=' + br;
+    } if (job_type != 0) {
+        get_type_job = '&type_job=' + job_type;
     }
-    var url_filter = "/loai-du-an/?id=" + id_filter + get_created + get_created_end + get_type + get_au + get_n + get_br;
+    var url_filter = "/loai-du-an/?id=" + id_filter + get_created + get_created_end + get_type + get_au + get_n + get_br + get_type_job;
     window.location.href = url_filter;
 }
-var status_index = 1;
-$('.inp_status_index').click(function () {
-    if ($(this).prop('checked')) {
-        $(".inp_status_index").prop('checked', false);
-        $(this).prop('checked', true);
-        status_index = $(this).data('val');
+function index_job_type(e) {
+    var status_index = 1;
+    if ($(e).prop('checked')) {
+        $(e).parents('.list_job_type_2').find(".inp_status_index").prop('checked', false);
+        $(e).prop('checked', true);
+        status_index = $(e).data('val');
+        $(e).parents('.list_job_type_2').data('index', status_index)
         if (status_index == 0) {
-            $('.list_index').hide();
-            $('.status_index.active').removeClass('active');
+            $(e).parents('.list_job_type_2').find('.ratio').val('');
+            $(e).parents('.list_job_type_2').find('.ratio').attr('disabled', true);
         } else {
-            $('.list_index').show();
-            $('.status_index').addClass('active');
+            $(e).parents('.list_job_type_2').find('.ratio').attr('disabled', false);
         }
     } else {
-        $(this).prop('checked', true);
+        $(e).prop('checked', true);
     }
-}); var job_index = $('.name_index_2').html();
+}
+var job_index = $('.name_index_2').html();
 $('.add_index').click(function () {
     var html = `<div class="list_index_2">
                     <div class="this_add_project w_50 inp_index">
@@ -376,40 +363,51 @@ $('.add_discount').click(function () {
 });
 var job_type = $('.job_type_2').html();
 $('.add_job_type').click(function () {
+    var length_job_type = $('.list_job_type_2').length + 1;
     var html = `<div class="list_job_type_2">
-                     <div class="this_add_project w_50 inp_index">
-                     <p class="title_input">Loại công việc</p>
+                     <div class="this_add_project w_30 inp_index">
+                        <div class="d_flex justify_content_space">
+                            <p class="title_input">Loại công việc</p>
+                            <div class="job_type_index d_flex ">
+                                <p class="title_input">Index</p>
+                                <div class="data_index">
+                                    <input type="checkbox" data-val="1" checked class="inp_status_index" onclick="index_job_type(this)" id="checkbox`+ length_job_type + `a">
+                                    <label for="checkbox`+ length_job_type + `a" class="checkmark"></label>
+                                    <p>Có</p>
+                                </div>
+                                <div class="data_index">
+                                    <input type="checkbox" data-val="0" class="inp_status_index" onclick="index_job_type(this)" id="checkbox`+ length_job_type + `b">
+                                    <label for="checkbox`+ length_job_type + `b" class="checkmark"></label>
+                                    <p>Không</p>
+                                </div>
+                            </div>
+                        </div>
                        `+ job_type + `
                         <p class="error error_name"></p>
                     </div>
-                    <div class="this_add_project w_50 inp_index data_discount">
+                    <div class="this_add_project w_30 inp_index data_discount">
                                     <p class="title_input">Số lượng</p>
                                     <input type="text" class="input_num number" placeholder="Nhập">
                                     <p class="error error_val"></p>
+                                </div>
+                    <div class="this_add_project w_30 inp_index data_discount">
+                                    <p class="title_input">Tỉ lệ index mong muốn </p>
+                                    <input type="text" class="input_num ratio" placeholder="Nhập">
+                                    <p class="error error_ratio"></p>
                                 </div>
                     <div class="del_index" onclick="del_index(this)">
                         <img src="/images/del2.svg" alt="xóa">
                     </div>
                 </div>`;
-    $('.list_job_type').append(html); 
+    $('.list_job_type').append(html);
     $('.select2').select2({
         placeholder: 'Chọn',
         'height': '100%'
-    });updateSelectOptions();
+    }); updateSelectOptions();
 });
 function del_index(e) {
     $(e).parent().remove();
 }
-
-$('.inp_status_index').each(function () {
-    if ($(this).prop('checked')) {
-        status_index = $(this).data('val');
-    }
-    if (status_index == 0) {
-        $('.list_index').hide();
-        $('.status_index.active').removeClass('active');
-    }
-});
 function export_excel() {
     var currentUrl = window.location.search;
     // console.log(currentUrl);
@@ -458,24 +456,20 @@ function updateSelectOptions(e) {
                         type: "error",
                     });
                 } else {
-                    if (response.array_data.job_type) {
-                        var job_type = JSON.parse(response.array_data.job_type);
-                        var html_val = '';
-                        job_type.forEach(function (item, index) {
-                            html_val += ' <option value="' + item.id + '" >' + item.name + '</option>';
-                        });
-                        var html_dis = `<p class="title_input">Loại công việc</p>
-                                            <select class="job_type select2">
-                                                <option value="" >Chọn</option>
-                                                `+ html_val + `
-                                            </select>
-                                             <p class="error error_val"></p>`;
-                        $(e).parents('.list_job_type_2').find('.data_job_type').html(html_dis);
-                        $('.select2').select2({
-                            placeholder: 'Chọn',
-                            'height': '100%'
-                        });
+                    $(e).parents('.list_job_type_2').find('.ratio').val(response.array_data.ratio);
+                    if (response.array_data.status_index == 0) {
+                        $(e).parents('.list_job_type_2').find('.ratio').val('');
+                        $(e).parents('.list_job_type_2').find('.ratio').attr('disabled', true);
+                    } else {
+                        $(e).parents('.list_job_type_2').find('.ratio').attr('disabled', false);
                     }
+                    $(e).parents('.list_job_type_2').find(".inp_status_index").prop('checked', false);
+                    $(e).parents('.list_job_type_2').find('.inp_status_index').each(function () {
+                        if ($(this).data('val') == response.array_data.status_index) {
+                            $(this).prop('checked', true);
+                        }
+                    })
+                    $(e).parents('.list_job_type_2').data('index', response.array_data.status_index)
                 }
             },
             error: function (xhr) {

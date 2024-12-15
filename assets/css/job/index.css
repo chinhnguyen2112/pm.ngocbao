@@ -1,4 +1,3 @@
-
 .title_project {
     margin-bottom: 0;
 }
@@ -56,7 +55,9 @@
     border-collapse: collapse;
 }
 
-table, th, td{
+table,
+th,
+td {
     border: 1px solid #ED1E2533;
 }
 
@@ -161,7 +162,7 @@ th:last-child::before {
 
 .btn_popup p {
     border: 1px solid #797979;
-    border-radius: 30px;
+    border-radius: 8px;
     padding: 10px 24px;
     display: flex;
     align-items: center;
@@ -173,7 +174,9 @@ th:last-child::before {
     background: #00B528;
     border: unset !important;
     color: #fff;
-}.box_btn_project {
+}
+
+.box_btn_project {
     display: flex;
     margin-bottom: 10px;
     margin-right: 15px;
@@ -183,13 +186,14 @@ th:last-child::before {
 .btn_project {
     padding: 7px 22px;
     background: #FF7A00;
-    border-radius: 30px;
+    border-radius: 8px;
     color: #FFFFFF;
 }
 
 .btn_project_cancel {
     background: #FF0F00;
 }
+
 .status_project svg {
     rotate: 90deg;
     margin-left: 10px;
@@ -232,21 +236,25 @@ th:last-child::before {
 .main_status p:hover {
     background: #00b528;
 }
+
 .this_date {
     display: flex;
     align-items: center;
 }
+
 .list_date {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
+
 p.ab_\% {
     position: absolute;
     right: 4px;
     top: 6px;
     font-size: 14px;
 }
+
 .this_add_project input {
     /* width: 38px !important; */
     /* margin-right: auto; */
@@ -262,7 +270,9 @@ p.ab_\% {
     width: 100%;
     height: 100%;
     z-index: 5;
-}.body_add_project {
+}
+
+.body_add_project {
     border-radius: 10px;
     width: 800px;
     margin: auto;
@@ -270,7 +280,9 @@ p.ab_\% {
     background: #fff;
     max-height: calc(100vh - 60px);
     overflow: auto;
-}.title_add_project {
+}
+
+.title_add_project {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -278,26 +290,34 @@ p.ab_\% {
     padding: 16px 41px;
     border-radius: 10px 10px 0 0;
 }
-.title_add_project svg{
+
+.title_add_project svg {
     cursor: pointer;
 }
+
 .title_add_project p {
     color: #fff;
     font-size: 20px;
     font-weight: 600;
     line-height: 27px;
-}.main_add_project {
+}
+
+.main_add_project {
     padding: 20px 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     gap: 20px 30px;
-}.this_add_project {
+}
+
+.this_add_project {
     width: calc(50% - 15px);
     position: relative;
 }
-.this_add_project input,.this_add_project select {
+
+.this_add_project input,
+.this_add_project select {
     border: none;
     width: -webkit-fill-available;
     height: 40px;
@@ -306,13 +326,18 @@ p.ab_\% {
     padding-left: 10px;
     box-sizing: border-box;
 }
+
 .this_add_project .select2-container .select2-selection--single .select2-selection__rendered {
     font-size: 12px;
     line-height: 44px;
-}.this_add_project .select2-container {
+}
+
+.this_add_project .select2-container {
     width: 100% !important;
-}.title_input {
-    font-size: 16px;
+}
+
+.title_input {
+    font-size: 20px;
     font-weight: 400;
     line-height: 21.6px;
     margin-bottom: 5px;
@@ -320,9 +345,13 @@ p.ab_\% {
 
 .title_input span {
     color: red;
-}.edit_project .select_add,.edit_project .select2-container {
-    width:100% !important;
 }
+
+.edit_project .select_add,
+.edit_project .select2-container {
+    width: 100% !important;
+}
+
 .btn_add_project p {
     margin: auto;
     color: #fff;
@@ -331,31 +360,40 @@ p.ab_\% {
     line-height: 20px;
     text-align: left;
     background: red;
-    border-radius: 30px;
+    border-radius: 8px;
     padding: 15px 44px;
 }
 
 .btn_add_project {
     margin: auto;
     cursor: pointer;
-}.w_100 {
+}
+
+.w_100 {
     width: 100%;
 }
-.list_index_2{
+
+.list_index_2 {
     display: flex;
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
     margin-bottom: 15px;
     position: relative;
-}.inp_index {
+}
+
+.inp_index {
     position: relative;
-}.ab_\% {
+}
+
+.ab_\% {
     position: absolute;
     top: 14px;
     right: 22px;
     font-size: 17px;
-}p.name_index {
+}
+
+p.name_index {
     height: 40px;
     border: 1px solid #B1B5C3;
     border-radius: 10px;
@@ -363,6 +401,7 @@ p.ab_\% {
     line-height: 36px;
     background: #dcdcdc;
 }
-.box_export{
+
+.box_export {
     display: block !important;
 }

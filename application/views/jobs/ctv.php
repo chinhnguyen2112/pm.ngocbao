@@ -73,9 +73,9 @@
             <?php }
             if (!in_array(3, $list_filter)) { ?>
                 <div class="this_filter">
-                    <p class="p_title_filter">Loại công việc</p>
+                    <p class="p_title_filter">Hạng mục</p>
                     <select name="job_type" onchange="filter_select(this)" class="select2">
-                        <option value="0">Loại công việc</option>
+                        <option value="0">Hạng mục</option>
                         <?php foreach ($job_type as $val) {  ?>
                             <option <?= ($this->input->get('type') == $val['id']) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
                         <?php } ?>
@@ -83,6 +83,17 @@
                 </div>
             <?php }
             if (!in_array(4, $list_filter)) { ?>
+                <div class="this_filter">
+                    <p class="p_title_filter">Loại công việc</p>
+                    <select name="num_job_type" onchange="filter_select(this)" class="select2">
+                        <option value="0">Loại công việc</option>
+                        <?php foreach ($num_job_type as $val) {  ?>
+                            <option <?= ($this->input->get('type_num') == $val['id'].'_'.$val['num_job_type']) ? 'selected' : '' ?> value="<?= $val['id'].'_'.$val['num_job_type'] ?>"><?= $val['name'].'('.$val['num_job_type'].')' ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            <?php }
+            if (!in_array(5, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian nhận việc</p>
                     <div class="list_inp_filter">
@@ -92,7 +103,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(5, $list_filter)) { ?>
+            if (!in_array(6, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Deadline CTV</p>
                     <div class="list_inp_filter">
@@ -102,7 +113,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(6, $list_filter)) { ?>
+            if (!in_array(7, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian hoàn thành</p>
                     <div class="list_inp_filter">
@@ -112,7 +123,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(7, $list_filter)) { ?>
+            if (!in_array(8, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Trạng thái công việc</p>
                     <select name="status_ctv" onchange="filter_select(this)">
@@ -123,7 +134,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(8, $list_filter)) { ?>
+            if (!in_array(9, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Trạng thái duyệt QA</p>
                     <select name="qa_check" onchange="filter_select(this)">
@@ -137,7 +148,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(9, $list_filter)) { ?>
+            if (!in_array(10, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian duyệt</p>
                     <div class="list_inp_filter">
@@ -147,7 +158,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(10, $list_filter)) { ?>
+            if (!in_array(11, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Xác nhận duyệt</p>
                     <select name="check_replly" onchange="filter_select(this)">
@@ -258,8 +269,9 @@
                                     </td>
                                     <td><a target="_blank" href="<?= $val['file_job'] ?>"><?= $val['file_job'] ?></a></td>
                                     <td><?= date('H:i:s d/m/Y', $val['created_at']) ?></td>
-                                    <td><?= date('H:i:s d/m/Y', $val['deadline']) ?></td>
-                                    <td><?= date('H:i:s d/m/Y', $val['completion_time']) ?></td>
+                                    <td><?= ($val['deadline'] > 0) ? date('H:i:s d/m/Y', $val['deadline']) : '--+--' ?>
+                                    <td><?= ($val['completion_time'] > 0) ? date('H:i:s d/m/Y', $val['completion_time']) : '--+--' ?>
+                                    </td>
                                     <td><?= number_format($val['price']) ?></td>
                                     <td><?= number_format($val['punish']) ?></td>
                                     <td><?= number_format($val['price'] - $val['punish']) ?></td>

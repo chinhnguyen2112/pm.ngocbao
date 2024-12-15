@@ -4,6 +4,11 @@ $('.inp_status_index').click(function () {
         $(".inp_status_index").prop('checked', false);
         $(this).prop('checked', true);
         status_index = $(this).data('val');
+        if (status_index == 0) {
+            $('.box_ratio').hide();
+        } else {
+            $('.box_ratio').show();
+        }
     } else {
         $(this).prop('checked', true);
     }
@@ -56,6 +61,10 @@ $("#form_add").validate({
         "info": {
             required: true,
         },
+        "ratio": {
+            required: true,
+            min: 0,
+        },
         "status": {
             required: true,
         },
@@ -70,6 +79,10 @@ $("#form_add").validate({
         },
         "info": {
             required: "Không được để trống",
+        },
+        "ratio": {
+            required: "Không được để trống",
+            min: "Giá trị phải lớn hơn 0",
         },
         "status": {
             required: 'Chọn trạng thái',

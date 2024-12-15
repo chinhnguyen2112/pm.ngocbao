@@ -50,6 +50,17 @@ class Setting extends CI_Controller
                 $br = $this->input->get('br');
                 $where .= " AND FIND_IN_SET($br, project_type.list_brand) ";
             }
+
+            if ($this->input->get('type_job') > 0) {
+                $type_job = $this->input->get('type_job');
+                $where .= " AND JSON_CONTAINS(project_type.job_type, '{\"job_type\": \"$type_job\"}', '$')";
+            }
+            // SELECT project_type.*
+            // FROM project_type
+            // JOIN users
+            // on users.id = project_type.author
+            // WHERE JSON_CONTAINS(project_type.job_type, '{"job_type": "18"}', '$');
+
             $project_types =  $this->Madmin->query_sql("SELECT project_type.*,users.name as name_author  FROM project_type JOIN users ON users.id=project_type.author WHERE delete_status = 0 $where");
             pagination('/loai-du-an/', count($project_types), $limit);
             $project_types_limit =  $this->Madmin->query_sql("SELECT project_type.*,users.name as name_author  FROM project_type JOIN users ON users.id=project_type.author WHERE delete_status = 0 $where  ORDER BY project_type.id DESC  LIMIT $start,$limit");
@@ -57,6 +68,7 @@ class Setting extends CI_Controller
             $data['name'] = $this->Madmin->query_sql("SELECT DISTINCT name FROM project_type WHERE delete_status = 0  ORDER BY name ASC");
             $data['author'] = $this->Madmin->query_sql("SELECT users.id,users.name,users.role  FROM project_type JOIN users ON users.id=project_type.author WHERE project_type.delete_status = 0 GROUP BY project_type.author ORDER BY name ASC ");
             $data['list_brand'] = $this->Madmin->get_list(" delete_status = 0", 'brands');
+            $data['job_type'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name,job_type.status,job_type.delete_status  FROM jobs JOIN job_type ON job_type.id = jobs.job_type GROUP BY job_type  ORDER BY job_type.name ASC");
             $data['canonical'] = base_url('laoi-du-an/');
             $data['meta_title'] = 'Loại dự án';
             $data['content'] = 'setting/project_type';
@@ -113,12 +125,6 @@ class Setting extends CI_Controller
             $data['file_ex'] = $this->input->post('file_ex');
             if ($this->input->post('list_brand') != '') {
                 $data['list_brand'] =  implode(',', $this->input->post('list_brand'));
-            }
-            $data['status_index'] = $status_index = $this->input->post('status_index');
-            $data_index =  $this->input->post('data_index');
-            $data['data_index'] = '';
-            if ($status_index == 1) {
-                $data['data_index'] = json_encode($data_index);
             }
             $data_discount =  $this->input->post('data_discount');
             $data['data_discount'] = '';
@@ -255,7 +261,11 @@ class Setting extends CI_Controller
             $data['status'] = $this->input->post('status');
             // $data['price'] = $this->input->post('price');
             $data['info'] = $this->input->post('info');
-            $data['status_index'] = $this->input->post('status_index');
+            $data['status_index'] = $status_index= $this->input->post('status_index');
+            $data['ratio'] = 0;
+            if($status_index == 1){
+                $data['ratio'] = $this->input->post('ratio');
+            }
             $data['updated_at'] = time();
             $where = [
                 'name' => $name,

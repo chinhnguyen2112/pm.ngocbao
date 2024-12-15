@@ -469,12 +469,17 @@
                                     <td><input type="checkbox" class="check_i" name="check_i" value="<?= $val['id'] ?>">
                                     </td>
                                     <td><a href="/sua-du-an/<?= $val['id'] ?>"><img src="/images/edit.svg" alt="sửa"></a></td>
-                                    <td class="<?= ($val['role_author'] == 6 && $jobs == null) ? 'edit_mkt' : '' ?>">
-                                        <a href="/them-thong-tin-du-an/<?= $val['id'] ?>">
-                                            <svg class="<?= ($val['role_author'] == 6 && $jobs == null) ? 'svg_edit' : '' ?>" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <td> <?php if ($val['role_author'] == 6 && $jobs == null) { ?>
+                                            <a href="/them-thong-tin-du-an/<?= $val['id'] ?>">
+                                                <svg class="svg_edit" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2ZM10 0C4.477 0 0 4.477 0 10C0 15.523 4.477 20 10 20C15.523 20 20 15.523 20 10C20 4.477 15.523 0 10 0ZM15 9H11V5H9V9H5V11H9V15H11V11H15V9Z" fill="#979797" />
+                                                </svg>
+                                            </a>
+                                        <?php } else { ?>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M10 2C14.411 2 18 5.589 18 10C18 14.411 14.411 18 10 18C5.589 18 2 14.411 2 10C2 5.589 5.589 2 10 2ZM10 0C4.477 0 0 4.477 0 10C0 15.523 4.477 20 10 20C15.523 20 20 15.523 20 10C20 4.477 15.523 0 10 0ZM15 9H11V5H9V9H5V11H9V15H11V11H15V9Z" fill="#979797" />
                                             </svg>
-                                        </a>
+                                        <?php } ?>
                                     </td>
                                     <td><?= project_id($val['id']) ?></td>
                                     <td><?= date('H:i:s d/m/Y', $val['created_at']) ?></td>

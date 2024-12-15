@@ -61,9 +61,9 @@
             <?php }
             if (!in_array(2, $list_filter)) { ?>
                 <div class="this_filter">
-                    <p class="p_title_filter">Loại công việc</p>
+                    <p class="p_title_filter">Hạng mục</p>
                     <select name="job_type" onchange="filter_select(this)" class="select2">
-                        <option value="0">Loại công việc</option>
+                        <option value="0">Hạng mục</option>
                         <?php foreach ($job_type as $val) {  ?>
                             <option <?= ($this->input->get('type') == $val['id']) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
                         <?php } ?>
@@ -71,6 +71,17 @@
                 </div>
             <?php }
             if (!in_array(3, $list_filter)) { ?>
+                <div class="this_filter">
+                    <p class="p_title_filter">Loại công việc</p>
+                    <select name="num_job_type" onchange="filter_select(this)" class="select2">
+                        <option value="0">Loại công việc</option>
+                        <?php foreach ($num_job_type as $val) {  ?>
+                            <option <?= ($this->input->get('type_num') == $val['id'].'_'.$val['num_job_type']) ? 'selected' : '' ?> value="<?= $val['id'].'_'.$val['num_job_type'] ?>"><?= $val['name'].'('.$val['num_job_type'].')' ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            <?php }
+            if (!in_array(4, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Người tạo</p>
                     <select name="author" onchange="filter_select(this)" class="select2">
@@ -83,7 +94,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(4, $list_filter)) { ?>
+            if (!in_array(5, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian tạo</p>
                     <div class="list_inp_filter">
@@ -93,7 +104,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(5, $list_filter)) { ?>
+            if (!in_array(6, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Website</p>
                     <select name="website" onchange="filter_select(this)" class="select2">
@@ -104,7 +115,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(6, $list_filter)) { ?>
+            if (!in_array(7, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">CTV thực hiện</p>
                     <select name="ctv" onchange="filter_select(this)" class="select2">
@@ -118,7 +129,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(7, $list_filter)) { ?>
+            if (!in_array(8, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Deadline CTV</p>
                     <div class="list_inp_filter">
@@ -128,7 +139,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(8, $list_filter)) { ?>
+            if (!in_array(9, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Tiến độ CTV</p>
                     <select name="status_ctv" onchange="filter_select(this)">
@@ -140,7 +151,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(9, $list_filter)) { ?>
+            if (!in_array(10, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian triển khai</p>
                     <div class="list_inp_filter">
@@ -150,7 +161,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(10, $list_filter)) { ?>
+            if (!in_array(11, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian hoàn thành</p>
                     <div class="list_inp_filter">
@@ -160,7 +171,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(11, $list_filter)) { ?>
+            if (!in_array(12, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Xác nhận duyệt</p>
                     <select name="check_replly" onchange="filter_select(this)">
@@ -173,7 +184,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(12, $list_filter)) { ?>
+            if (!in_array(13, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">QA thực hiện</p>
                     <select name="qa" onchange="filter_select(this)" class="select2">
@@ -184,7 +195,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(13, $list_filter)) { ?>
+            if (!in_array(14, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Tiến độ QA</p>
                     <select name="qa_check" onchange="filter_select(this)">
@@ -199,7 +210,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(14, $list_filter)) { ?>
+            if (!in_array(15, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian duyệt</p>
                     <div class="list_inp_filter">
@@ -209,7 +220,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(15, $list_filter)) { ?>
+            if (!in_array(16, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Tiến độ công việc chung</p>
                     <select name="status_job" onchange="filter_select(this)">
@@ -220,7 +231,7 @@
                     </select>
                 </div>
             <?php }
-            if (!in_array(16, $list_filter)) { ?>
+            if (!in_array(17, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Thời gian hoàn thành</p>
                     <div class="list_inp_filter">
@@ -230,7 +241,7 @@
                     </div>
                 </div>
             <?php }
-            if (!in_array(17, $list_filter)) { ?>
+            if (!in_array(18, $list_filter)) { ?>
                 <div class="this_filter">
                     <p class="p_title_filter">Mức độ ưu tiên</p>
                     <div class="list_inp_filter">

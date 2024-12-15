@@ -52,6 +52,15 @@
                     <?php } ?>
                 </select>
             </div>
+                <div class="this_filter">
+                    <p class="p_title_filter">Loại công việc</p>
+                    <select name="job_type" onchange="filter_select(this)" class="select2">
+                        <option value="0">Loại công việc</option>
+                        <?php foreach ($job_type as $val) {  ?>
+                            <option <?= ($this->input->get('type_job') == $val['id']) ? 'selected' : '' ?> value="<?= $val['id'] ?>"><?= $val['name'] ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
             <div class="this_filter">
                 <p class="p_title_filter">Thời gian thêm</p>
                 <div class="list_inp_filter">

@@ -230,7 +230,7 @@
 </div>
 <style>
     .this_add_project .select2-selection.select2-selection--multiple {
-        border-radius: 30px;
+        border-radius: 8px;
         border: 1px solid #aaa;
     }
 

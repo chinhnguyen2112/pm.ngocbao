@@ -368,3 +368,16 @@ p.name_index {
     box-sizing: border-box;
     background: #fff;
 }
+.w_50 {
+    width: calc(50% - 15px) !important;
+}
+
+.w_30 {
+    width: calc((100% - 30px) / 3) !important;
+}
+.d_flex{
+    display: flex;
+}
+.justify_content_space{
+    justify-content:space-between
+}

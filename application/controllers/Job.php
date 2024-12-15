@@ -40,6 +40,18 @@ class Job extends CI_Controller
                 $type = $this->input->get('type');
                 $where .= " AND jobs.job_type = $type";
             }
+            if ($this->input->get('type_num') != '') {
+                $type_num = $this->input->get('type_num');
+                $arr_type_num = explode('_',$type_num);
+                $type_num_0 = $arr_type_num[0];
+                $type_num_1 = $arr_type_num[1];
+                $where .= " AND jobs.job_type = $type_num_0";
+                if($type_num_1 > 0){
+                    $where .= " AND jobs.num_job_type = $type_num_1";
+                }else{
+                    $where .= " AND jobs.num_job_type IS NULL ";
+                }
+            }
             if ($this->input->get('sqa') > 0) {
                 $sqa = $this->input->get('sqa');
                 $sqa = $sqa - 1;
@@ -98,15 +110,16 @@ class Job extends CI_Controller
             JOIN projects On projects.id = ctv_jobs.project_id 
             JOIN jobs On jobs.id = ctv_jobs.job_id 
             JOIN job_type On job_type.id = jobs.job_type 
-            WHERE ctv_jobs.ctv= $id $where ");
+            WHERE ctv_jobs.ctv= $id $where  ORDER BY jobs.z_index DESC,ctv_jobs.created_at DESC");
             pagination('/cong-viec-cong-tac-vien/', count($ctv_jobs), $limit);
             $ctv_jobs_limit = $this->Madmin->query_sql("SELECT ctv_jobs.*,code,file_job,website,file,job_type,note_ctv,jobs.num_job_type,jobs.price,punish,jobs.info as job_info, job_type.name as name_job_type FROM ctv_jobs 
             JOIN projects On projects.id = ctv_jobs.project_id 
             JOIN jobs On jobs.id = ctv_jobs.job_id 
             JOIN job_type On job_type.id = jobs.job_type 
-            WHERE ctv_jobs.ctv= $id $where ORDER BY jobs.z_index DESC,ctv_jobs.created_at LIMIT $start,$limit ");
+            WHERE ctv_jobs.ctv= $id $where ORDER BY jobs.z_index DESC,ctv_jobs.created_at DESC LIMIT $start,$limit ");
             $data['ctv_jobs'] = $ctv_jobs_limit;
             $data['job_type'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name  FROM job_type JOIN jobs On jobs.job_type = job_type.id JOIN ctv_jobs On ctv_jobs.job_id = jobs.id WHERE ctv = $id GROUP BY job_type.id ORDER BY job_type.name ASC");
+            $data['num_job_type'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name ,jobs.num_job_type  FROM job_type JOIN jobs On jobs.job_type = job_type.id JOIN ctv_jobs On ctv_jobs.job_id = jobs.id WHERE ctv = $id GROUP BY job_type.id,num_job_type  ORDER BY job_type.name ASC");
             $data['filter_job'] = $this->Madmin->query_sql("SELECT jobs.id,jobs.code FROM jobs  JOIN ctv_jobs On ctv_jobs.job_id = jobs.id  WHERE ctv_jobs.ctv = $id  ORDER BY ctv_jobs.project_id ASC,ctv_jobs.job_id ASC");
             $data['website'] = $this->Madmin->query_sql("SELECT DISTINCT projects.website FROM projects JOIN ctv_jobs On ctv_jobs.project_id = projects.id WHERE ctv_jobs.ctv = $id ");
             $data['advanced_filter'] = $this->Madmin->get_by(" user_id = $id_u AND page_id = 4 ", 'advanced_filter');
@@ -147,6 +160,18 @@ class Job extends CI_Controller
             if ($this->input->get('type') > 0) {
                 $type = $this->input->get('type');
                 $where .= " AND jobs.job_type = $type";
+            }
+            if ($this->input->get('type_num') != '') {
+                $type_num = $this->input->get('type_num');
+                $arr_type_num = explode('_',$type_num);
+                $type_num_0 = $arr_type_num[0];
+                $type_num_1 = $arr_type_num[1];
+                $where .= " AND jobs.job_type = $type_num_0";
+                if($type_num_1 > 0){
+                    $where .= " AND jobs.num_job_type = $type_num_1";
+                }else{
+                    $where .= " AND jobs.num_job_type IS NULL ";
+                }
             }
             if ($this->input->get('au') > 0) {
                 $au = $this->input->get('au');
@@ -225,6 +250,7 @@ class Job extends CI_Controller
             WHERE jobs.status_qa = 1 $where ORDER BY CASE WHEN jobs.status = 3 THEN 1 ELSE 0 END, jobs.status ASC, jobs.id DESC LIMIT $start,$limit");
             $data['jobs'] = $jobs_limit;
             $data['job_types'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name,job_type.status,job_type.delete_status  FROM jobs JOIN job_type ON job_type.id = jobs.job_type WHERE jobs.delete_status = 0 AND jobs.status_qa =1 GROUP BY job_type  ORDER BY job_type.name ASC");
+            $data['num_job_type'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name,job_type.status,job_type.delete_status,jobs.num_job_type FROM jobs JOIN job_type ON job_type.id = jobs.job_type WHERE jobs.delete_status = 0 AND jobs.status_qa =1 GROUP BY job_type,num_job_type  ORDER BY job_type.name ASC");
             $data['ctv'] = $this->Madmin->query_sql("SELECT DISTINCT  users.id,users.name FROM jobs LEFT JOIN ctv_jobs ON ctv_jobs.job_id = jobs.id  JOIN users ON users.id = ctv_jobs.ctv where role=5 AND jobs.status = 1 AND jobs.delete_status = 0 ORDER BY users.name ASC");
             $data['filter_job'] = $this->Madmin->query_sql("SELECT id,code FROM jobs WHERE status_qa = 1 ORDER BY project_id ASC");
             $data['website'] = $this->Madmin->query_sql("SELECT DISTINCT website FROM projects JOIN jobs ON jobs.project_id=projects.id WHERE jobs.status_qa=1 ");

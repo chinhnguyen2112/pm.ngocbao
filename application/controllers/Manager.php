@@ -595,6 +595,18 @@ class Manager extends CI_Controller
                     $type = $this->input->get('type');
                     $where .= " AND jobs.job_type = $type";
                 }
+                if ($this->input->get('type_num') != '') {
+                    $type_num = $this->input->get('type_num');
+                    $arr_type_num = explode('_',$type_num);
+                    $type_num_0 = $arr_type_num[0];
+                    $type_num_1 = $arr_type_num[1];
+                    $where .= " AND jobs.job_type = $type_num_0";
+                    if($type_num_1 > 0){
+                        $where .= " AND jobs.num_job_type = $type_num_1";
+                    }else{
+                        $where .= " AND jobs.num_job_type IS NULL ";
+                    }
+                }
                 if ($this->input->get('au') > 0) {
                     $au = $this->input->get('au');
                     $where .= " AND jobs.author = $au";
@@ -766,6 +778,7 @@ class Manager extends CI_Controller
                 LIMIT $start, $limit");
                 $data['jobs'] = $jobs_limit;
                 $data['job_type'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name,job_type.status,job_type.delete_status  FROM jobs JOIN job_type ON job_type.id = jobs.job_type WHERE jobs.delete_status = 0 GROUP BY job_type  ORDER BY job_type.name ASC");
+                $data['num_job_type'] = $this->Madmin->query_sql("SELECT job_type.id,job_type.name,job_type.status,job_type.delete_status,jobs.num_job_type  FROM jobs JOIN job_type ON job_type.id = jobs.job_type WHERE jobs.delete_status = 0 GROUP BY job_type,num_job_type  ORDER BY job_type.name ASC");
                 $data['ctv'] = $this->Madmin->query_sql("SELECT id,name  FROM users where role=5 AND status = 1 AND delete_user = 0  ORDER BY name ASC");
                 $data['qa_check'] = $this->Madmin->query_sql("SELECT users.id, users.name, users.role FROM users LEFT JOIN ctv_jobs ON users.id = ctv_jobs.qa_id WHERE (users.role = 4 AND users.delete_user = 0)  OR (users.delete_user = 1 AND ctv_jobs.qa_id IS NOT NULL) GROUP BY users.id, users.name, users.role ORDER BY users.name ASC;");
                 $data['list_ctv'] = $this->Madmin->query_sql("SELECT  users.id,users.name,users.role FROM ctv_jobs JOIN users ON users.id = ctv_jobs.ctv WHERE role = 5 GROUP BY ctv_jobs.ctv  ORDER BY users.name ASC");

@@ -80,9 +80,9 @@
                                             <p class="title_input">Số tiền</p>
                                             <select class="val_discount select2">
                                                 <option value="">Chọn</option>
-                                                <?php $data_dicount = json_decode($val['list_select']['data_discount']); 
+                                                <?php $data_dicount = json_decode($val['list_select']['data_discount']);
                                                 foreach ($data_dicount as  $val3) { ?>
-                                                    <option <?= ($val3->number == $val['revenue'])?'selected':'' ?> value="<?= $val3->number ?>"><?= $va3->name . ' ' . number_format($val3->number) ?> vnđ</option>
+                                                    <option <?= ($val3->number == $val['revenue']) ? 'selected' : '' ?> value="<?= $val3->number ?>"><?= $va3->name . ' ' . number_format($val3->number) ?> vnđ</option>
                                                 <?php } ?>
                                             </select>
                                             <p class="error error_val"></p>
@@ -117,7 +117,7 @@
     }
 
     .this_add_project .select2-selection.select2-selection--multiple {
-        border-radius: 30px;
+        border-radius: 8px;
         border: 1px solid #aaa;
     }
 
